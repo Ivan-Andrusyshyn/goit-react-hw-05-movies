@@ -1,0 +1,25 @@
+.container_details {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  gap: 20px;
+}
+.details_page > img {
+  width: 200px;
+  height: 300px;
+  display: block;
+}
+.genres_wrapp {
+  display: flex;
+  gap: 5px;
+}
+.details_page {
+  display: flex;
+  padding: 10px;
+  gap: 20px;
+}
+.details_list {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+}

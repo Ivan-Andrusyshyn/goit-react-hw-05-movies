@@ -1,0 +1,40 @@
+.loader {
+  display: flex;
+  align-items: center;
+  height: 100px;
+  margin-left: 100px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  margin: 0 5px;
+  border-radius: 50%;
+  background-color: #000;
+  opacity: 0;
+  animation: dotFadeIn 1s infinite;
+}
+
+.dot1 {
+  animation-delay: 0.2s;
+}
+
+.dot2 {
+  animation-delay: 0.3s;
+}
+
+.dot3 {
+  animation-delay: 0.4s;
+}
+
+@keyframes dotFadeIn {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
