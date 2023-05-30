@@ -1,18 +1,17 @@
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import "./style.css";
-import PropTypes from "prop-types";
-
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import './style.css';
+import PropTypes from 'prop-types';
 const Reviews = () => {
   const location = useParams();
   const [movie, setMovie] = useState({});
-  const Key = "72a7646a40703400682c093b811827fe";
-  const BaseUrl = "https://api.themoviedb.org/3/";
+  const Key = '72a7646a40703400682c093b811827fe';
+  const BaseUrl = 'https://api.themoviedb.org/3/';
   useEffect(() => {
     const fetchData = async () => {
       try {
         const url = `${BaseUrl}movie/${location.movieId}/reviews?api_key=${Key}`;
-        const { results } = await fetch(url).then((resp) => resp.json());
+        const { results } = await fetch(url).then(resp => resp.json());
         setTimeout(() => {
           setMovie(results);
         }, 1000);
@@ -24,18 +23,21 @@ const Reviews = () => {
   }, [location]);
   return (
     <ul className="character_list">
-      {movie.length > 0 ? (
-        movie.map(({ id, author, content }) => {
-          return (
-            <li className="character_item" key={id}>
-              <h2>Author:{author}</h2>
-              <p>{content}</p>
-            </li>
-          );
-        })
-      ) : (
+      {movie.length === 0 ? (
         <div>Sorry, but we can not found any information </div>
+      ) : (
+        ''
       )}
+      {movie.length > 0
+        ? movie.map(({ id, author, content }) => {
+            return (
+              <li className="character_item" key={id}>
+                <h2>Author:{author}</h2>
+                <p>{content}</p>
+              </li>
+            );
+          })
+        : ''}
     </ul>
   );
 };

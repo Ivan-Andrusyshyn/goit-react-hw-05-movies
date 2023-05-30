@@ -17,6 +17,7 @@ const Movies = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
+        setLoading(true);
         if (!query) return;
         const url = `${BaseUrl}search/movie?query=${query}&include_adult=false&api_key=${KeyUser}`;
         const { results } = await axios(url).then(response => response.data);
@@ -31,9 +32,7 @@ const Movies = () => {
       } catch (err) {
         console.log(err);
       } finally {
-        setTimeout(() => {
-          setLoading(false);
-        }, 1000);
+        setLoading(false);
       }
     };
     fetchData();
