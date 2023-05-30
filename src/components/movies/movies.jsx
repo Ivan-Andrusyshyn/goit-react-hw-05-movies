@@ -5,7 +5,6 @@ import { useLocation, Link, useSearchParams } from 'react-router-dom';
 import { Form } from './form';
 import axios from 'axios';
 import PropTypes from 'prop-types';
-
 const Movies = () => {
   const [movie, setMovie] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -21,6 +20,11 @@ const Movies = () => {
         if (!query) return;
         const url = `${BaseUrl}search/movie?query=${query}&include_adult=false&api_key=${KeyUser}`;
         const { results } = await axios(url).then(response => response.data);
+        if (results.length === 0) {
+          alert(
+            'Here is nothing to see, please put another query and try again'
+          );
+        }
         setTimeout(() => {
           setMovie(results);
         }, 1000);

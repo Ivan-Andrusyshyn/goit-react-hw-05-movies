@@ -2,10 +2,12 @@ body {
   color: black;
 }
 ul,
+ol,
 li {
   padding: 0;
   margin: 0;
 }
+
 p {
   display: flex;
   align-items: center;
@@ -87,4 +89,19 @@ button {
 
 button:hover {
   background-color: #0069d9;
+}
+
+li {
+  margin-bottom: 10px;
+}
+
+li a {
+  color: #333;
+  text-decoration: none;
+  transition: color, transform, 0.3s;
+}
+
+li a:hover {
+  color: blue;
+  transform: scale(1.1);
 }

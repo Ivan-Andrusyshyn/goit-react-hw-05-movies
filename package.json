@@ -2,7 +2,7 @@
   "name": "react-homework-template",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://Ivan-Andrusyshyn.github.io/goit-react-hw-05-movies/",
+  "homepage": "https://Ivan-Andrusyshyn.github.io/goit-react-hw-05-movies",
   "dependencies": {
     "@emotion/react": "^11.11.0",
     "@emotion/styled": "^11.11.0",
@@ -18,11 +18,13 @@
     "react-loader-spinner": "^5.3.4",
     "react-router-dom": "^6.11.2",
     "react-scripts": "5.0.1",
+    "react-toastify": "^9.1.3",
     "web-vitals": "^2.1.3"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "deploy": "gh-pages -d build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint:js": "eslint src/**/*.{js,jsx}"
@@ -44,5 +46,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "gh-pages": "^5.0.0"
   }
 }
