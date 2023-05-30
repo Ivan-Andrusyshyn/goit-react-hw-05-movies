@@ -19,7 +19,7 @@ function App() {
           <Route path="cast" element={<Credits />} />
           <Route path="reviews" element={<Reviews />} />
         </Route>
-        <Route path="*" element={<Navigate to="/" />} />
+        <Route path="*" element={<Navigate to="/" replace={true} />} />
       </Route>
     </Routes>
   );
