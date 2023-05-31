@@ -3,8 +3,10 @@ import '../style.css';
 import { Loader } from '../loader/loader';
 import { useLocation, Link, useSearchParams } from 'react-router-dom';
 import { Form } from './form';
-import axios from 'axios';
 import PropTypes from 'prop-types';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { fetchData } from 'components/fetch/fetch';
 const Movies = () => {
   const [movie, setMovie] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -12,32 +14,9 @@ const Movies = () => {
   const location = useLocation();
   const query = searchParams.get('query');
 
-  const KeyUser = '72a7646a40703400682c093b811827fe';
-  const BaseUrl = 'https://api.themoviedb.org/3/';
+  const imageUrl = 'https://image.tmdb.org/t/p/w342';
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        setLoading(true);
-        if (!query) return;
-        const url = `${BaseUrl}search/movie?query=${query}&include_adult=false&api_key=${KeyUser}`;
-        const { results } = await axios(url).then(response => response.data);
-        if (results.length === 0) {
-          alert(
-            'Here is nothing to see, please put another query and try again'
-          );
-        }
-        setTimeout(() => {
-          setMovie(results);
-        }, 1000);
-      } catch (err) {
-        console.log(err);
-      } finally {
-        setTimeout(() => {
-          setLoading(false);
-        }, 1000);
-      }
-    };
-    fetchData();
+    fetchData(query, setLoading, setMovie);
   }, [query]);
 
   const searchOnSubmit = searchQuery => {
@@ -51,15 +30,23 @@ const Movies = () => {
   return (
     <div className="container-search">
       <Form value={query} onSubmit={searchOnSubmit} />
-      <ul>
+      <ToastContainer />
+      <ul className="movie_list">
         {loading ? (
           <Loader />
         ) : (
-          movie.map(({ id, original_title }) => {
+          movie.map(({ id, original_title, poster_path }) => {
             return (
               <li key={id}>
-                <Link to={`${id}`} state={{ from: location }}>
-                  {original_title}
+                <Link
+                  to={`${id}`}
+                  state={{ from: location }}
+                  className="custom-link"
+                >
+                  <div className="movie_list_item">
+                    <img src={`${imageUrl}${poster_path}`} alt="" />
+                    <p>{original_title}</p>
+                  </div>
                 </Link>
               </li>
             );

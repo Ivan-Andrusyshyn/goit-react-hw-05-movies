@@ -3,6 +3,8 @@
   flex-direction: column;
   padding: 10px;
   gap: 20px;
+  justify-content: center;
+  align-items: center;
 }
 .details_page > img {
   width: 200px;
@@ -17,9 +19,44 @@
   display: flex;
   padding: 10px;
   gap: 20px;
+  width: 600px;
 }
 .details_list {
   display: flex;
   gap: 20px;
   list-style: none;
+  margin-left: 15px;
+}
+/* ===========================, */
+.btn_back {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #000;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.btn_back:hover {
+  color: #333;
+}
+
+.back-icon {
+  margin-right: 8px;
+  font-size: 20px;
+}
+.btn_back:hover {
+  color: #0056b3;
+}
+
+.btn_back:visited {
+  color: #800080;
+}
+
+.btn_back:focus {
+  outline: none;
+}
+.links_details {
+  display: block;
+  margin-left: 10px;
 }

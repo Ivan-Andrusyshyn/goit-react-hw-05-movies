@@ -1,4 +1,4 @@
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 const DetailsPage = ({ title, img, genres, vote, overview }) => {
   return (
     <div className="details_page">

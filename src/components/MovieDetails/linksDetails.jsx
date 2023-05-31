@@ -1,6 +1,6 @@
-import { Suspense } from "react";
-import { Outlet, Link } from "react-router-dom";
-import { Loader } from "components/loader/loader";
+import { Suspense } from 'react';
+import { Outlet, Link } from 'react-router-dom';
+import { Loader } from 'components/loader/loader';
 const LinksDetails = () => {
   return (
     <>

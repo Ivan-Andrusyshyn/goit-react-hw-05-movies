@@ -1,20 +1,22 @@
-import "./style.css";
-import axios from "axios";
-import { useLocation, useParams } from "react-router-dom";
-import { useEffect, useRef, useState } from "react";
-import { Loader } from "../loader/loader";
-import { Link } from "react-router-dom";
-import PropTypes from "prop-types";
-import LinksDetails from "./linksDetails";
-import DetailsPage from "./detailsPage";
+import './style.css';
+import axios from 'axios';
+import { useLocation, useParams } from 'react-router-dom';
+import { useEffect, useRef, useState } from 'react';
+import { Loader } from '../loader/loader';
+import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import LinksDetails from './linksDetails';
+import DetailsPage from './detailsPage';
+import { IconContext } from 'react-icons';
+import { FiArrowLeft } from 'react-icons/fi';
 const MovieDetails = () => {
   const location = useParams();
   const [movie, setMovie] = useState({});
-  const Key = "72a7646a40703400682c093b811827fe";
-  const BaseUrl = "https://api.themoviedb.org/3/";
-  const imageUrl = "https://image.tmdb.org/t/p/w342";
+  const Key = '72a7646a40703400682c093b811827fe';
+  const BaseUrl = 'https://api.themoviedb.org/3/';
+  const imageUrl = 'https://image.tmdb.org/t/p/w342';
   const { state } = useLocation();
-  const refBack = useRef(state?.from ?? "/movies");
+  const refBack = useRef(state?.from ?? '/movies');
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -39,11 +41,17 @@ const MovieDetails = () => {
     }
   };
   const Vote = () => {
-    return Math.floor(Number(vote_average * 10)) + "%";
+    return Math.floor(Number(vote_average * 10)) + '%';
   };
   return (
     <>
-      <Link to={refBack.current}>Back</Link>
+      <IconContext.Provider value={{ className: 'back-icon' }}>
+        <Link to={refBack.current} className="btn_back">
+          <FiArrowLeft />
+          Back
+        </Link>
+      </IconContext.Provider>
+
       <div className="container_details">
         {!original_title ? (
           <Loader />
